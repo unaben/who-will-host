@@ -1,0 +1,262 @@
+{
+  "_schema": {
+    "relationships": {
+      "user -> contacts": "one-to-many (saved attendees, owned by a user)",
+      "user -> eventGroups": "one-to-many",
+      "eventGroup -> events": "one-to-many (user can create multiple events per group)",
+      "event <-> hosts": "many-to-many via eventHosts (an event can have multiple hosts)",
+      "event <-> attendees": "many-to-many via eventAttendees (max 6 per event)"
+    },
+    "constraints": {
+      "event.maxAttendees": 6,
+      "eventAttendees": "count per eventId must be <= 6",
+      "eventAttendees.source": "'contact' (picked from saved attendees, uses contactId) or 'guest' (added ad hoc, uses guestName/guestEmail)",
+      "eventHosts": "unique (eventId, hostId); at least 1 host per event"
+    }
+  },
+  "users": [
+    {
+      "id": "usr_1",
+      "name": "Ben",
+      "email": "ben@example.com",
+      "createdAt": "2026-10-23T12:00:00Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "con_1",
+      "userId": "usr_1",
+      "name": "Ada Obi",
+      "email": "ada@example.com",
+      "phone": "+447700900001"
+    },
+    {
+      "id": "con_2",
+      "userId": "usr_1",
+      "name": "Tunde Bello",
+      "email": "tunde@example.com",
+      "phone": "+447700900002"
+    },
+    {
+      "id": "con_3",
+      "userId": "usr_1",
+      "name": "Grace Smith",
+      "email": "grace@example.com",
+      "phone": null
+    }
+  ],
+  "hosts": [
+    {
+      "id": "host_1",
+      "userId": "usr_1",
+      "contactId": "con_1",
+      "displayName": "Ada Obi"
+    },
+    {
+      "id": "host_2",
+      "userId": "usr_1",
+      "contactId": "con_2",
+      "displayName": "Tunde Bello"
+    },
+    {
+      "id": "host_3",
+      "userId": "usr_1",
+      "contactId": "con_3",
+      "displayName": "Grace Smith"
+    }
+  ],
+  "eventGroups": [
+    {
+      "id": "grp_1",
+      "userId": "usr_1",
+      "name": "Birthday Weekend",
+      "description": "All events for the birthday weekend",
+      "color": "#4F46E5",
+      "createdAt": "2026-10-23T12:05:00Z"
+    },
+    {
+      "id": "grp_2",
+      "userId": "usr_1",
+      "name": "Summer party",
+      "description": "Sea side party to welcome new members",
+      "color": "#0D9488",
+      "createdAt": "2026-10-26T10:48:55.071Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_1",
+      "groupId": "grp_1",
+      "title": "Friday Dinner Party",
+      "description": "Dinner at the Italian place",
+      "location": "New street, Birmingham",
+      "startsAt": "2026-11-06T19:00:00.000Z",
+      "endsAt": "2026-11-06T22:00:00.000Z",
+      "maxAttendees": 6,
+      "status": "scheduled",
+      "createdAt": "2026-10-23T12:10:00Z"
+    },
+    {
+      "id": "evt_2",
+      "groupId": "grp_1",
+      "title": "Saturday Brunch",
+      "description": null,
+      "location": "Malvern",
+      "startsAt": "2026-11-07T11:00:00Z",
+      "endsAt": "2026-11-07T13:00:00Z",
+      "maxAttendees": 6,
+      "status": "draft",
+      "createdAt": "2026-10-23T12:12:00Z"
+    },
+    {
+      "id": "evt_3",
+      "groupId": "grp_2",
+      "title": "Friday evening party",
+      "description": "Celebrating our new team members",
+      "location": "Florida beach",
+      "startsAt": "2026-10-26T18:00:00.000Z",
+      "endsAt": "2026-10-26T23:00:00.000Z",
+      "maxAttendees": 6,
+      "status": "scheduled",
+      "createdAt": "2026-10-26T10:52:44.208Z"
+    }
+  ],
+  "eventHosts": [
+    {
+      "eventId": "evt_2",
+      "hostId": "host_2",
+      "role": "lead"
+    },
+    {
+      "eventId": "evt_1",
+      "hostId": "host_1",
+      "role": "lead"
+    },
+    {
+      "eventId": "evt_1",
+      "hostId": "host_2",
+      "role": "co-host"
+    },
+    {
+      "eventId": "evt_3",
+      "hostId": "host_2",
+      "role": "lead"
+    },
+    {
+      "eventId": "evt_3",
+      "hostId": "host_3",
+      "role": "co-host"
+    }
+  ],
+  "eventAttendees": [
+    {
+      "id": "att_4",
+      "eventId": "evt_2",
+      "source": "contact",
+      "contactId": "con_2",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "accepted"
+    },
+    {
+      "id": "att_1",
+      "eventId": "evt_1",
+      "source": "contact",
+      "contactId": "con_1",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "accepted"
+    },
+    {
+      "id": "att_2",
+      "eventId": "evt_1",
+      "source": "contact",
+      "contactId": "con_3",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "pending"
+    },
+    {
+      "id": "att_3",
+      "eventId": "evt_1",
+      "source": "guest",
+      "contactId": null,
+      "guestName": "Chidi Eze",
+      "guestEmail": "chidi@example.com",
+      "rsvp": "pending"
+    },
+    {
+      "id": "att_8",
+      "eventId": "evt_1",
+      "source": "guest",
+      "contactId": null,
+      "guestName": "Mark SmithWill",
+      "guestEmail": null,
+      "rsvp": "pending"
+    },
+    {
+      "id": "att_9",
+      "eventId": "evt_3",
+      "source": "contact",
+      "contactId": "con_1",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "accepted"
+    },
+    {
+      "id": "att_10",
+      "eventId": "evt_3",
+      "source": "contact",
+      "contactId": "con_3",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "accepted"
+    },
+    {
+      "id": "att_11",
+      "eventId": "evt_3",
+      "source": "contact",
+      "contactId": "con_2",
+      "guestName": null,
+      "guestEmail": null,
+      "rsvp": "declined"
+    },
+    {
+      "id": "att_12",
+      "eventId": "evt_3",
+      "source": "guest",
+      "contactId": null,
+      "guestName": "Jeffery Smart",
+      "guestEmail": null,
+      "rsvp": "maybe"
+    },
+    {
+      "id": "att_13",
+      "eventId": "evt_3",
+      "source": "guest",
+      "contactId": null,
+      "guestName": "Jonathan Goldsmith",
+      "guestEmail": null,
+      "rsvp": "declined"
+    },
+    {
+      "id": "att_14",
+      "eventId": "evt_3",
+      "source": "guest",
+      "contactId": null,
+      "guestName": "Emmanuel Atama",
+      "guestEmail": null,
+      "rsvp": "pending"
+    }
+  ],
+  "_suggestedFeatures": [
+    "RSVP status (accepted/declined/maybe) and reminders",
+    "Waitlist when an event hits 6 attendees",
+    "Option to save a guest as a contact after adding them",
+    "Host roles/permissions (lead vs co-host can edit)",
+    "Shareable invite links per event",
+    "Calendar export (.ics) and conflict detection",
+    "Notes, checklist/tasks and cost splitting per event",
+    "Recurring events and event templates"
+  ]
+}
