@@ -1,0 +1,1 @@
+export {default as RenderAttendee} from './RenderAttendee/RenderAttendee'

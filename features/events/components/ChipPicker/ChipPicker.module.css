@@ -1,0 +1,61 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.chip {
+  cursor: pointer;
+  user-select: none;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chip:has(:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chipSelected {
+  border-color: var(--accent);
+  background: var(--accent);
+    color: var(--on-accent, #fff);
+}
+
+.chipLocked {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.chipLocked:hover {
+  border-color: var(--border);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}

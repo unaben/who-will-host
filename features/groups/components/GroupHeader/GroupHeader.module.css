@@ -1,0 +1,81 @@
+.header {
+  margin-bottom: 28px;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--text);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.buttonPrimary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent, #fff);
+}
+
+.buttonQuietDanger {
+  color: var(--danger);
+}
+
+.buttonQuietDanger:hover:not(:disabled) {
+  border-color: var(--danger);
+}
+
+.buttonDanger {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.buttonDanger:hover:not(:disabled) {
+  border-color: var(--danger);
+  filter: brightness(1.1);
+}

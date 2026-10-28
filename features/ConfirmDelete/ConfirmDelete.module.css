@@ -1,0 +1,57 @@
+.confirm {
+  margin-top: 12px;
+}
+
+.confirm .actions {
+  margin-top: 8px;
+}
+
+.confirmText {
+  margin: 0;
+  font-weight: 500;
+}
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.buttonDanger {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.buttonDanger:hover:not(:disabled) {
+  border-color: var(--danger);
+  filter: brightness(1.1);
+}

@@ -1,0 +1,248 @@
+.card {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.cardDraft {
+  border-left-color: var(--border);
+  border-left-style: dashed;
+  opacity: 0.85;
+}
+
+.cardFull {
+  background: var(--surface-2);
+}
+
+/* The event currently loaded into the form. */
+.cardEditing {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.badge {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badgeScheduled {
+  background: var(--accent);
+  color: var(--on-accent, #fff);
+}
+
+.badgeDraft {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.when {
+  margin: 6px 0 0;
+  font-weight: 500;
+}
+
+.where,
+.description {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.people {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+}
+
+.people dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.people dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+.person {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.personLead {
+  border-color: var(--accent);
+}
+
+.personGuest {
+  border-style: dashed;
+}
+
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent, #fff);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* RSVP: each attendee pill carries its own dropdown, tinted by the answer. */
+/* .rsvpSelect {
+  padding: 1px 2px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.rsvpSelect:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.rsvpSelect:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.rsvpAccepted {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.rsvpMaybe {
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+}
+
+.rsvpDeclined {
+  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
+  opacity: 0.75;
+} */
+
+.rsvpSummary {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.spots {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.825rem;
+}
+
+.spotsFull {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ---------- Edit / delete ---------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.buttonQuietDanger {
+  color: var(--danger);
+}
+
+.buttonQuietDanger:hover:not(:disabled) {
+  border-color: var(--danger);
+}
+
+.buttonDanger {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.buttonDanger:hover:not(:disabled) {
+  border-color: var(--danger);
+  filter: brightness(1.1);
+}
+
+.confirm {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.confirm .actions {
+  margin-top: 10px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.confirmText {
+  margin: 0;
+  font-weight: 500;
+}
+
+.error {
+  margin: 6px 0 0;
+  color: var(--danger);
+  font-size: 0.85rem;
+}

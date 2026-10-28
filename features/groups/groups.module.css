@@ -1,0 +1,139 @@
+.page {
+  --accent: #4f46e5; /* fallback for anything outside a card or the form */
+  --on-accent: #ffffff;
+  width: 90%;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: clamp(32px, 7vh, 80px) 0 96px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  margin-bottom: clamp(28px, 6vh, 56px);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.lead {
+  max-width: 40ch;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.4;
+}
+
+/* ---------- Layout: groups on the left, new-group form on the right ---------- */
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Group cards ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 240px;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
+}
+
+.cardName {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.cardMeta {
+  align-self: flex-start;
+  margin: auto 0 0;
+  padding: 6px 14px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--on-accent) 18%, transparent);
+  font-size: 1rem;
+  font-weight: 600;
+}
+/* A group with nothing in it yet gets an outline instead of a fill. */
+.cardEmpty .cardMeta {
+  border: 2px dashed color-mix(in srgb, var(--on-accent) 55%, transparent);
+  background: none;
+}
+
+/* ---------- Empty, loading and error ---------- */
+
+.empty {
+  padding: 40px;
+  border: 2px dashed var(--border);
+  border-radius: 24px;
+  color: var(--muted);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.state {
+  margin: 40px 0;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.stateError {
+  color: var(--danger);
+}
