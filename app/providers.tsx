@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { makeStore } from '@/store/store';
 
 export function Providers({ children }: { children: ReactNode }) {
-  // A store per mounted app, not a module-level singleton shared across requests.
   const [store] = useState(makeStore);
   return <Provider store={store}>{children}</Provider>;
 }
